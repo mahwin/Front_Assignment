@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx", // entry 파일을 .tsx로 변경
+  entry: "./src/index.tsx", // entry 파일 설정
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -10,7 +10,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/, // .ts와 .tsx 파일을 처리
+        test: /\.(ts|tsx)$/, // ts -> js
         exclude: /node_modules/,
         use: "ts-loader",
       },
@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },
@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./index.html",
     }),
   ],
   devServer: {
